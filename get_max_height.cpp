@@ -1,19 +1,22 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class Node {
+class Node
+{
 public:
     int val;
     Node *left;
     Node *right;
-    Node(int val) {
+    Node(int val)
+    {
         this->val = val;
         this->left = NULL;
         this->right = NULL;
     }
 };
 
-Node* input_tree() {
+Node *input_tree()
+{
     int val;
     cin >> val;
     Node *root;
@@ -21,10 +24,11 @@ Node* input_tree() {
         root = NULL;
     else
         root = new Node(val);
-    queue<Node*> q;
+    queue<Node *> q;
     if (root)
         q.push(root);
-    while (!q.empty()) {
+    while (!q.empty())
+    {
         Node *p = q.front();
         q.pop();
 
@@ -51,8 +55,10 @@ Node* input_tree() {
     return root;
 }
 
-int max_height(Node* root) {
-    if (root == NULL) {
+int max_height(Node *root)
+{
+    if (root == NULL)
+    {
         return -1;
     }
     int l = max_height(root->left);
@@ -60,7 +66,8 @@ int max_height(Node* root) {
     return max(l, r) + 1;
 }
 
-int main() {
+int main()
+{
     Node *root = input_tree();
     cout << max_height(root);
     return 0;
